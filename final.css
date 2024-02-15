@@ -1,0 +1,83 @@
+@media (min-width: 620px) {
+    main {
+      column-count: 1;
+      column-gap: 20px;
+    }
+    
+    section {
+      break-inside: avoid;
+    }
+  }
+  
+  @media (min-width: 960px) {
+    main {
+       column-count: 5;
+    }
+  }
+
+  main {    
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+:root {
+    --blue: #34495e;
+    --green: #e74c3c;
+    --yellow: #C9C243;
+    --orange: #FFA644;
+    --red: #3498db;
+  }
+  
+body {
+    background-color:#34495e;
+    font-family: 'Ubuntu', sans-serif;
+    color: #34495e;
+  }
+
+header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 0;
+  }
+
+.title {
+    font-size: 2.6em;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px
+  }
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    border-top: 3px solid var(--red);
+    border-radius: 3px;
+    background-color: white;
+  }
+
+.options-link {
+    text-decoration: none;
+    font-size: 0.9em;
+    color: var(--red);
+  }
+
+  section {
+    border-top: 3px solid var(--orange);
+    border-radius: 3px;
+    background-color: white;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  #Home{
+    display: block;
+  }
+  #Sobre{
+    display: none;
+  }
+  #Simulador{
+    display: none;
+  }

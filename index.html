@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="final.css" />
+    <script type="text/javascript" src="simulador_script.js"></script>
+    <script defer src="scriptSPA.js"></script>
+</head>
+
+<body>
+    <div id="Simulador">
+        <header>
+
+            <h1 class="title">Simulador Assembly</h1>
+            <div class="options">
+                <button style="border: 0;" onclick="Fhome()" class="options-link link-active">Home</button>
+                <button style="border: 0;" onclick="Fsimulador()" class="options-link">Simulador</button>
+                <button style="border: 0;" onclick="Fsobre()" class="options-link">Sobre</button>
+            </div>
+
+        </header><br>
+
+        <main>
+            <section>
+                <p>Mnemonicos</p>
+                <button style="width: 100%; height: 30px;" value="0" onclick="mnemonico(-1)">MOV</button>
+                <button style="width: 100%; height: 30px;" value="1" onclick="mnemonico(1)">ADD</button>
+                <button style="width: 100%; height: 30px;" value="2" onclick="mnemonico(2)">SUB</button>
+                <button style="width: 100%; height: 30px;" value="3" onclick="mnemonico(3)">PUSH</button>
+                <button style="width: 100%; height: 30px;" value="4" onclick="mnemonico(4)"> POP</button>
+                <button style="width: 100%; height: 30px;" value="5" onclick="mnemonico(5)"> CMP</button>
+            </section>
+            <field id="section_regs">
+                <section>
+                    <p>Registradores de Entrada</p>
+                    <button style="width: 100%; height: 30px;" id="ax_1"
+                        onclick="registrador_entrada(ax);">AX</button><br>
+                    <button style="width: 100%; height: 30px;" id="bx_1"
+                        onclick="registrador_entrada(bx);">BX</button><br>
+                    <button style="width: 100%; height: 30px;" id="cx_1"
+                        onclick="registrador_entrada(cx);">CX</button><br>
+                    <button style="width: 100%; height: 30px;" id="dx_1"
+                        onclick="registrador_entrada(dx);">DX</button><br>
+
+                </section>
+            </field>
+            <section>
+                <p>Registradores de Saida</p>
+                <button style="width: 100%; height: 30px;" onclick="registrador_saida(ax);">AX</button><br>
+                <button style="width: 100%; height: 30px;" onclick="registrador_saida(bx);">BX</button><br>
+                <button style="width: 100%; height: 30px;" onclick="registrador_saida(cx);">CX</button><br>
+                <button style="width: 100%; height: 30px;" onclick="registrador_saida(dx);">DX</button><br><br>
+                <input type="text" id="thomas" style="width: 100%; height: 30px;" placeholder="Digite um valor"
+                    onkeypress="return onlynumber();"><br><br>
+                <input style="width: 100%; height: 30px;" type="submit" onclick="registrador_saida(9);"><br><br>
+            </section>
+
+            <section>
+                <p>Registradores</p>
+                <label>AX:</label>
+                <label id="mostrarax">0</label><br>
+
+                <label>BX:</label>
+                <label id="mostrarbx">0</label><br>
+
+                <label>CX:</label>
+                <label id="mostrarcx">0</label><br>
+
+                <label>DX:</label>
+                <label id="mostrardx">0</label><br>
+
+                <label>SP:</label>
+                <label id="mostrarsp">0</label><br>
+
+                <label>PC:</label>
+                <label id="mostrarpc">0</label>
+
+            </section>
+
+            <section>
+                <p>Pilha</p>
+                <textarea style="resize: none; width: 100%; height: 200px;" id="textarea_pilha"></textarea>
+
+            </section>
+
+        </main>
+        <section style="margin-right: 75px; margin-left: 75px;">
+            <p>Códigos</p>
+            <textarea id="codigos" style="resize: none; width: 100%; height: 200px;"></textarea>
+            <button style="width: 200px; height: 30px;" onclick="limpar();">Limpar</button>
+        </section>
+    </div>
+    <div id="Home">
+        <header>
+
+            <h1 class="title">Home</h1>
+            <div class="options">
+                <button style="border: 0;" onclick="Fhome()" class="options-link link-active">Home</button>
+                <button style="border: 0;" onclick="Fsimulador()" class="options-link">Simulador</button>
+                <button style="border: 0;" onclick="Fsobre()" class="options-link">Sobre</button>
+            </div>
+
+        </header><br>
+        <main>
+            <section>
+                <h1>Assembly</h1>
+                <p> Assemblery é uma linguagem de baixo nível usada principalmente para
+                    programar microcontroladores e/ou microprocessadores. Nosso emulador
+                    é baseado na arquitetura do Intel x86 16 bits.</p>
+            </section>
+            <section>
+                <h1>Registradores Gerais</h1>
+                <p> Os registradores são usados utilizados nas operações aritméticas e lógicas que ocorrem na Unidade
+                    Lógica Artimica, dos registradores que o x86 possui iremos trabalhar com 4 que são de
+                    propósito geral, sendo eles:</p>
+            </section>
+            <section>
+                <p>AX (16 bits) : que são dividos em:
+                    AH (8 bits) - Parte alta
+                    AL(8 bits) - Parte baixa</p>
+            </section>
+            <section>
+                <p>BX(16 bits) : que são divididos em:
+                    BH(8 bits)
+                    BL(8 bits)</p>
+            </section>
+            <section>
+                <p>CX(16 bits) : que são divididos em:
+                    CH(8 bits)
+                    CL(8 bits)</p>
+            </section>
+            <section>
+                <p>DX(16 bits) : que são divididos em:
+                    DH(8 bits)
+                    DL(8 bits)</p>
+            </section>
+        </main>
+        <section style="margin-right: 75px; margin-left: 75px;">
+            <h1>REGISTRADORES DE ÍNDICES E APONTADORES</h1>
+            <p>IP (instruction pointer) OU PC é um registrador utilizado para localizar a posição, dentro do
+                segmento de código e armazenando qual sera a próxima que deve ser instrução a ser executada.</p>
+        </section>
+
+        <section style="margin-right: 75px; margin-left: 75px;">
+            <h1>REGISTRADORES SINALIZADORES - FLAGS</h1>
+            <p>Indicam o estado do processador durante a execução de cada
+                instrução, analisando o processamento bit a bit.<br><br>
+
+                Carry Flag = CF<br>
+                Parity Flag = PF<br>
+                Auxiliary Carry = AF<br>
+                Zero Flag = ZF<br>
+                Sign Flag = SF<br>
+                Overflow Flag = OF </p>
+        </section>
+
+        <section style="margin-right: 75px; margin-left: 75px;">
+            <h1>CONJUNTO DE INSTRUÇÕES ISA – (Instruction Set Architecture)</h1>
+            <p>As instruções (mnêmonicos) disponiveis no nosso simulador são:</p>
+            
+        </section>
+
+        <section style="margin-right: 75px; margin-left: 75px;">
+            <h1>MOV</h1>
+            <p> - Usada para transferir dados entre destino e fonte para efetuar essa intrução é necessário: </p>
+            <p>– registrador e registrador<br>
+                – registrador e imediato</p>
+        </section>
+
+        <section style="margin-right: 75px; margin-left: 75px;">
+            <h1>PILHA</h1>
+            <p> Usada para armazenar o conteudo de um registrador em uma pilha.</p>
+            <p>SP (stack pointer -> apontador de pilha) é utilizado para acessar a área
+                de pilha na memória; aponta para o topo da pilha.</p>
+        </section>
+
+        <section style="margin-right: 75px; margin-left: 75px;">
+            <h1>ADD
+            </h1>
+            <p> - Intrução Lógica Aritmética entre destino e fonte para efetuar essa intrução é necessário:<br>
+                – registrador e registrador<br>
+                – registrador e imediato
+            </p>
+        </section>
+        <section style="margin-right: 75px; margin-left: 75px;">
+            <h1>SUB
+            </h1>
+            <p> -Intrução Lógica Aritmética entre destino e fonte para efetuar essa intrução é necessário:
+
+                – registrador e registrador
+                – registrador e imediato
+            </p>
+        </section>
+        <section style="margin-right: 75px; margin-left: 75px;">
+            <h1>POP
+            </h1>
+            <p> - Usada para retirar o conteúdo da pilha para um registrador de 16 bits.
+            </p>
+        </section>
+        <section style="margin-right: 75px; margin-left: 75px;">
+            <h1>PUSH
+            </h1>
+            <p> - Usada para colocar o conteúdo de um registrador de 16 bits na pilha.
+            </p>
+        </section>
+        </header>
+    </div>
+    <div id="Sobre">
+        <header>
+
+            <h1 class="title">Sobre</h1>
+            <div class="options">
+                <button style="border: 0;" onclick="Fhome()" class="options-link link-active">Home</button>
+                <button style="border: 0;" onclick="Fsimulador()" class="options-link">Simulador</button>
+                <button style="border: 0;" onclick="Fsobre()" class="options-link">Sobre</button>
+            </div>
+
+        </header><br>
+        <header>
+            <br>
+            <section>
+                <p>Projeto realizado pelos alunos do 2º período de Engenharia da Computação da PUC-CAMPINAS, na matéria
+                    de Desenvolvimento de Sistemas Web, lessionada pelo professor ALISSON LINHARES DE CARVALHO
+                </p>
+
+        </header>
+    </div>
+</body>
+
+</html>
